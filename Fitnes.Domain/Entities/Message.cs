@@ -14,6 +14,6 @@ namespace Fitnes.Domain.Entities
         public int ToUserId { get; set; }
         public string Msg { get; set; } = string.Empty;
         public MessageType Type { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

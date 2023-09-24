@@ -18,6 +18,7 @@ namespace Fitnes.Domain.Entities
         public string? ImagePath { get; set; }
         public ProductType ProductType { get; set; } = ProductType.Product;
         public string Type { get; set; } = string.Empty;
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }

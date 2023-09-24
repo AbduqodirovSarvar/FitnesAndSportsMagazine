@@ -14,6 +14,6 @@ namespace Fitnes.Domain.Entities
         public int ProductId { get; set; }
         public Product? Product { get; set; }
         public int Amount { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }
