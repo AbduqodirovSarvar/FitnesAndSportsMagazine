@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\CreateModels\" />
-    <Folder Include="Models\UpdateModels\" />
+    <Folder Include="UseCases\Authorize\Commands\" />
+    <Folder Include="UseCases\Authorize\CommandHandlers\" />
+    <Folder Include="UseCases\Orders\Commands\" />
+    <Folder Include="UseCases\Orders\CommandsHandlers\" />
+    <Folder Include="UseCases\Orders\QueryHandlers\" />
+    <Folder Include="UseCases\Orders\Queries\" />
+    <Folder Include="UseCases\Users\QueryHandlers\" />
+    <Folder Include="UseCases\Users\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

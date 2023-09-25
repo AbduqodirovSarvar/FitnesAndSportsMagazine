@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.Models.ViewModels
 {
-    public class MessageViewModel
+    public class ConsumerServiceViewModel
     {
-        public int MessageId { get; set; }
+        public int ServiceId { get; set; }
         public int ConsumerId { get; set; }
         public ConsumerViewModel? Consumer { get; set; }
-        public int AdminId { get; set; }
-        public AdminViewModel? Admin { get; set; }
-        public string MsgOrPath { get; set; } = string.Empty;
-        public MessageType Type { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public TypeDays Days { get; set; }
+        public double ServicePrice { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime CreatedTime { get; set; }
     }
 }

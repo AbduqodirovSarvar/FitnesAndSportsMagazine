@@ -15,7 +15,7 @@ namespace Fitnes.Domain.Entities
         public int? TeacherId { get; set; }
         public Teacher? Teacher { get; set; }
         public DateTime JoinedTime { get; set; } = DateTime.UtcNow;
-        public ICollection<UserService> Services { get; set; } = new HashSet<UserService>();
+        public ICollection<ConsumerService> Services { get; set; } = new HashSet<ConsumerService>();
         public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
         public ICollection<Card> Cards { get; set; } = new HashSet<Card>();

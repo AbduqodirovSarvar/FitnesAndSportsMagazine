@@ -20,7 +20,7 @@ namespace Fitnes.Infrastructure.DbContexts
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<UserService> Services { get; set; }
+        public DbSet<ConsumerService> Services { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Card> Cards { get; set; }
 
@@ -31,6 +31,7 @@ namespace Fitnes.Infrastructure.DbContexts
             modelBuilder.ApplyConfiguration(new OrderTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ConsumerTypeConfiguration());
             modelBuilder.ApplyConfiguration(new AdminTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherTypeConfiguration());
         }
     }
 }

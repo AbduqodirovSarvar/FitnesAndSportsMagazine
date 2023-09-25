@@ -10,7 +10,7 @@ namespace Fitnes.Domain.Entities
     {
         public int Id { get; set; }
         public int ConsumerId { get; set; }
-        //public Consumer? User { get; set; }
+        public Consumer? Consumer { get; set; }
         public int ProductId { get; set; }
         public Product? Product { get; set; }
         public int Amount { get; set; }

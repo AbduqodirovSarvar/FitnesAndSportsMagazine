@@ -126,8 +126,8 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    UserId1 = table.Column<int>(type: "integer", nullable: false),
+                    ConsumerId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: true),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
                     Amount = table.Column<int>(type: "integer", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -136,21 +136,20 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Cards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cards_Consumer_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Cards_Consumer_ConsumerId",
+                        column: x => x.ConsumerId,
                         principalTable: "Consumer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Cards_Consumer_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Consumer",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Cards_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Cards_Users_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -161,8 +160,9 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FromUserId = table.Column<int>(type: "integer", nullable: false),
-                    ToUserId = table.Column<int>(type: "integer", nullable: false),
+                    ConsumerId = table.Column<int>(type: "integer", nullable: false),
+                    ConsumerId1 = table.Column<int>(type: "integer", nullable: true),
+                    AdminId = table.Column<int>(type: "integer", nullable: false),
                     Msg = table.Column<string>(type: "text", nullable: false),
                     Type = table.Column<int>(type: "integer", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -171,11 +171,22 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_Consumer_FromUserId",
-                        column: x => x.FromUserId,
+                        name: "FK_Messages_Admin_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admin",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Messages_Consumer_ConsumerId",
+                        column: x => x.ConsumerId,
                         principalTable: "Consumer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Messages_Consumer_ConsumerId1",
+                        column: x => x.ConsumerId1,
+                        principalTable: "Consumer",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -185,6 +196,7 @@ namespace Fitnes.Infrastructure.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ConsumerId = table.Column<int>(type: "integer", nullable: false),
+                    ConsumerId1 = table.Column<int>(type: "integer", nullable: true),
                     ProductId = table.Column<int>(type: "integer", nullable: false),
                     Amount = table.Column<int>(type: "integer", nullable: false),
                     IsSubmitted = table.Column<bool>(type: "boolean", nullable: false),
@@ -200,6 +212,11 @@ namespace Fitnes.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Orders_Consumer_ConsumerId1",
+                        column: x => x.ConsumerId1,
+                        principalTable: "Consumer",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Orders_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
@@ -213,8 +230,8 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<int>(type: "integer", nullable: false),
-                    UserId1 = table.Column<int>(type: "integer", nullable: false),
+                    ConsumerId = table.Column<int>(type: "integer", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: true),
                     Days = table.Column<int>(type: "integer", nullable: false),
                     ServicePrice = table.Column<double>(type: "double precision", nullable: false),
                     StartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -225,34 +242,38 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Services_Consumer_UserId",
-                        column: x => x.UserId,
+                        name: "FK_Services_Consumer_ConsumerId",
+                        column: x => x.ConsumerId,
                         principalTable: "Consumer",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Services_Users_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_Services_Consumer_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Consumer",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "BirthDay", "CreatedDate", "Email", "FirstName", "ImagePath", "LastName", "PasswordHash", "Phone" },
-                values: new object[] { 1, new DateOnly(2002, 3, 16), new DateTime(2023, 9, 24, 18, 52, 9, 204, DateTimeKind.Utc).AddTicks(2723), "abduqodirovsarvar.2002@gmail.com", "Admin", null, "Admin", "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=", "+998932340316" });
+                values: new object[] { 1, new DateOnly(2002, 3, 16), new DateTime(2023, 9, 25, 7, 33, 29, 163, DateTimeKind.Utc).AddTicks(9432), "abduqodirovsarvar.2002@gmail.com", "Admin", null, "Admin", "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=", "+998932340316" });
 
             migrationBuilder.InsertData(
                 table: "Admin",
                 columns: new[] { "Id", "CreatedDate", "UserId" },
-                values: new object[] { 1, new DateTime(2023, 9, 24, 18, 52, 9, 207, DateTimeKind.Utc).AddTicks(5687), 1 });
+                values: new object[] { 1, new DateTime(2023, 9, 25, 7, 33, 29, 166, DateTimeKind.Utc).AddTicks(2411), 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admin_UserId",
                 table: "Admin",
                 column: "UserId",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cards_ConsumerId",
+                table: "Cards",
+                column: "ConsumerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cards_ProductId",
@@ -265,11 +286,6 @@ namespace Fitnes.Infrastructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cards_UserId1",
-                table: "Cards",
-                column: "UserId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Consumer_TeacherId",
                 table: "Consumer",
                 column: "TeacherId");
@@ -277,12 +293,23 @@ namespace Fitnes.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Consumer_UserId",
                 table: "Consumer",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Messages_FromUserId",
+                name: "IX_Messages_AdminId",
                 table: "Messages",
-                column: "FromUserId");
+                column: "AdminId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_ConsumerId",
+                table: "Messages",
+                column: "ConsumerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Messages_ConsumerId1",
+                table: "Messages",
+                column: "ConsumerId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_ConsumerId",
@@ -290,9 +317,19 @@ namespace Fitnes.Infrastructure.Migrations
                 column: "ConsumerId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Orders_ConsumerId1",
+                table: "Orders",
+                column: "ConsumerId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_ProductId",
                 table: "Orders",
                 column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Services_ConsumerId",
+                table: "Services",
+                column: "ConsumerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_UserId",
@@ -300,14 +337,10 @@ namespace Fitnes.Infrastructure.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Services_UserId1",
-                table: "Services",
-                column: "UserId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Teachers_UserId",
                 table: "Teachers",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
@@ -326,9 +359,6 @@ namespace Fitnes.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Admin");
-
-            migrationBuilder.DropTable(
                 name: "Cards");
 
             migrationBuilder.DropTable(
@@ -339,6 +369,9 @@ namespace Fitnes.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Services");
+
+            migrationBuilder.DropTable(
+                name: "Admin");
 
             migrationBuilder.DropTable(
                 name: "Products");

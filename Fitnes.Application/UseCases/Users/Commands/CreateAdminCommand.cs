@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Users.Commands
 {
-    public class CreateUserCommand : ICommand<UserViewModel>
+    public class CreateAdminCommand : ICommand<AdminViewModel>
     {
         [Required]
         public string FirstName { get; set; } = null!;

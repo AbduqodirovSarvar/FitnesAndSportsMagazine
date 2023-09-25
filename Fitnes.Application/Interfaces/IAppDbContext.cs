@@ -14,7 +14,7 @@ namespace Fitnes.Application.Interfaces
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Product> Products { get; set; } 
         public DbSet<Order> Orders { get; set; }
-        public DbSet<UserService> Services { get; set; }
+        public DbSet<ConsumerService> Services { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Card> Cards { get; set; }
         Task<int> SaveChangesAsync(CancellationToken token = default);

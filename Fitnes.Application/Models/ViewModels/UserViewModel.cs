@@ -10,21 +10,13 @@ namespace Fitnes.Application.Models.ViewModels
 {
     public class UserViewModel
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
-        public string Email { get; set; } = null!;
-        public string Phone { get; set; } = null!;
-        public string PasswordHash { get; set; } = null!;
+        public int UserId { get; set; }
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Phone { get; set; } = string.Empty;
         public DateOnly BirthDay { get; set; }
-        public int? TeacherId { get; set; }
-        public Teacher? Teacher { get; set; }
         public string? ImagePath { get; set; }
-        public UserRole Role { get; set; }
-        public DateTime JoinedTime { get; set; }
-        public ICollection<UserServiceViewModel> Services { get; set; } = new HashSet<UserServiceViewModel>();
-        public ICollection<MessageViewModel> Messages { get; set; } = new HashSet<MessageViewModel>();
-        public ICollection<OrderViewModel> Orders { get; set; } = new HashSet<OrderViewModel>();
-        public ICollection<CardViewModel> Cards { get; set; } = new HashSet<CardViewModel>();
+        public DateTime CreatedDate { get; set; }
     }
 }

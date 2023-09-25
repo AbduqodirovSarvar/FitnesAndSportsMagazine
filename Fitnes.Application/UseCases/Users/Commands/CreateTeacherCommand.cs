@@ -1,15 +1,18 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
+using Fitnes.Domain.Entities;
+using Fitnes.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Fitnes.Application.UseCases.Users.Commands
 {
-    public class CreateUserCommand : ICommand<UserViewModel>
+    public class CreateTeacherCommand : ICommand<TeacherViewModel>
     {
         [Required]
         public string FirstName { get; set; } = null!;
@@ -23,6 +26,8 @@ namespace Fitnes.Application.UseCases.Users.Commands
         public string Password { get; set; } = null!;
         [Required]
         public DateOnly BirthDay { get; set; }
+        [Required]
+        public TypeDays Days { get; set; }
         public string? ImagePath { get; set; }
     }
 }

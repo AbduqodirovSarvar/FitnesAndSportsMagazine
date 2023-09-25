@@ -47,7 +47,7 @@ namespace Fitnes.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 9, 24, 18, 52, 9, 207, DateTimeKind.Utc).AddTicks(5687),
+                            CreatedDate = new DateTime(2023, 9, 25, 7, 33, 29, 166, DateTimeKind.Utc).AddTicks(2411),
                             UserId = 1
                         });
                 });
@@ -63,25 +63,25 @@ namespace Fitnes.Infrastructure.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("integer");
 
+                    b.Property<int>("ConsumerId")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId1")
+                    b.Property<int?>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ConsumerId");
+
                     b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Cards");
                 });
@@ -107,9 +107,48 @@ namespace Fitnes.Infrastructure.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Consumer");
+                });
+
+            modelBuilder.Entity("Fitnes.Domain.Entities.ConsumerService", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ConsumerId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<double>("ServicePrice")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConsumerId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Fitnes.Domain.Entities.Message", b =>
@@ -120,25 +159,32 @@ namespace Fitnes.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AdminId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ConsumerId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("ConsumerId1")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("FromUserId")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Msg")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("ToUserId")
-                        .HasColumnType("integer");
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FromUserId");
+                    b.HasIndex("AdminId");
+
+                    b.HasIndex("ConsumerId");
+
+                    b.HasIndex("ConsumerId1");
 
                     b.ToTable("Messages");
                 });
@@ -157,6 +203,9 @@ namespace Fitnes.Infrastructure.Migrations
                     b.Property<int>("ConsumerId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("ConsumerId1")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -169,6 +218,8 @@ namespace Fitnes.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ConsumerId");
+
+                    b.HasIndex("ConsumerId1");
 
                     b.HasIndex("ProductId");
 
@@ -238,7 +289,8 @@ namespace Fitnes.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Teachers");
                 });
@@ -295,51 +347,13 @@ namespace Fitnes.Infrastructure.Migrations
                         {
                             Id = 1,
                             BirthDay = new DateOnly(2002, 3, 16),
-                            CreatedDate = new DateTime(2023, 9, 24, 18, 52, 9, 204, DateTimeKind.Utc).AddTicks(2723),
+                            CreatedDate = new DateTime(2023, 9, 25, 7, 33, 29, 163, DateTimeKind.Utc).AddTicks(9432),
                             Email = "abduqodirovsarvar.2002@gmail.com",
                             FirstName = "Admin",
                             LastName = "Admin",
                             PasswordHash = "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=",
                             Phone = "+998932340316"
                         });
-                });
-
-            modelBuilder.Entity("Fitnes.Domain.Entities.UserService", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("Days")
-                        .HasColumnType("integer");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<double>("ServicePrice")
-                        .HasColumnType("double precision");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UserId1")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("UserId1");
-
-                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Fitnes.Domain.Entities.Admin", b =>
@@ -355,23 +369,21 @@ namespace Fitnes.Infrastructure.Migrations
 
             modelBuilder.Entity("Fitnes.Domain.Entities.Card", b =>
                 {
+                    b.HasOne("Fitnes.Domain.Entities.Consumer", null)
+                        .WithMany("Cards")
+                        .HasForeignKey("ConsumerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Fitnes.Domain.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Fitnes.Domain.Entities.Consumer", null)
-                        .WithMany("Cards")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Fitnes.Domain.Entities.User", "User")
+                    b.HasOne("Fitnes.Domain.Entities.Consumer", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Product");
 
@@ -385,8 +397,8 @@ namespace Fitnes.Infrastructure.Migrations
                         .HasForeignKey("TeacherId");
 
                     b.HasOne("Fitnes.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne()
+                        .HasForeignKey("Fitnes.Domain.Entities.Consumer", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -395,13 +407,42 @@ namespace Fitnes.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Fitnes.Domain.Entities.Message", b =>
+            modelBuilder.Entity("Fitnes.Domain.Entities.ConsumerService", b =>
                 {
                     b.HasOne("Fitnes.Domain.Entities.Consumer", null)
-                        .WithMany("Messages")
-                        .HasForeignKey("FromUserId")
+                        .WithMany("Services")
+                        .HasForeignKey("ConsumerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Fitnes.Domain.Entities.Consumer", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Fitnes.Domain.Entities.Message", b =>
+                {
+                    b.HasOne("Fitnes.Domain.Entities.Admin", "Admin")
+                        .WithMany()
+                        .HasForeignKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitnes.Domain.Entities.Consumer", null)
+                        .WithMany("Messages")
+                        .HasForeignKey("ConsumerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitnes.Domain.Entities.Consumer", "Consumer")
+                        .WithMany()
+                        .HasForeignKey("ConsumerId1");
+
+                    b.Navigation("Admin");
+
+                    b.Navigation("Consumer");
                 });
 
             modelBuilder.Entity("Fitnes.Domain.Entities.Order", b =>
@@ -412,11 +453,17 @@ namespace Fitnes.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Fitnes.Domain.Entities.Consumer", "Consumer")
+                        .WithMany()
+                        .HasForeignKey("ConsumerId1");
+
                     b.HasOne("Fitnes.Domain.Entities.Product", "Product")
                         .WithMany("Orders")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Consumer");
 
                     b.Navigation("Product");
                 });
@@ -424,29 +471,12 @@ namespace Fitnes.Infrastructure.Migrations
             modelBuilder.Entity("Fitnes.Domain.Entities.Teacher", b =>
                 {
                     b.HasOne("Fitnes.Domain.Entities.User", "UserTeacher")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne()
+                        .HasForeignKey("Fitnes.Domain.Entities.Teacher", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("UserTeacher");
-                });
-
-            modelBuilder.Entity("Fitnes.Domain.Entities.UserService", b =>
-                {
-                    b.HasOne("Fitnes.Domain.Entities.Consumer", null)
-                        .WithMany("Services")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Fitnes.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Fitnes.Domain.Entities.Consumer", b =>
