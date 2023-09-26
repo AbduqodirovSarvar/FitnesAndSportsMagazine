@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Users.CommandHandlers
 {
-    public class CreateConsumerCommandHandler : ICommandHandler<CreateConsumerCommand, ConsumerViewModel>
+    public class CreateAdminCommandHandler : ICommandHandler<CreateAdminCommand, AdminViewModel>
     {
         private readonly IAppDbContext context;
         private readonly IMapper mapper;
-        public CreateConsumerCommandHandler(IAppDbContext context, IMapper mapper)
+        public CreateAdminCommandHandler(IAppDbContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
         }
 
-        public Task<ConsumerViewModel> Handle(CreateConsumerCommand request, CancellationToken cancellationToken)
+        public Task<AdminViewModel> Handle(CreateAdminCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

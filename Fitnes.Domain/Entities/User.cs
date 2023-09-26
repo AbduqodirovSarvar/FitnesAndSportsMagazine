@@ -16,7 +16,7 @@ namespace Fitnes.Domain.Entities
         public string Phone { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
         public DateOnly BirthDay { get; set; }
-        public string? ImagePath { get; set; }
+        public string? ImageName { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

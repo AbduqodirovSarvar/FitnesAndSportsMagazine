@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,9 @@ namespace Fitnes.Application
 
             services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<IHashService, HashService>();
-
+            services.AddScoped<IFileSaveToFolder, FileSaveToFolder>();
+            services.AddTransient<IMailSender, MailSender>();
+            //services.AddTransient<SmtpClient>();
             var mappingconfig = new MapperConfiguration(x =>
             {
                 x.AddProfile(new Mapping());

@@ -26,7 +26,6 @@ namespace Fitnes.Application.Mappings
                     Phone = src.Phone,
                     PasswordHash = hashService.GetHash(src.Password),
                     BirthDay = src.BirthDay,
-                    ImagePath = src.ImagePath,
                     CreatedDate = DateTime.UtcNow
                 }))
                     .ReverseMap();
@@ -39,7 +38,6 @@ namespace Fitnes.Application.Mappings
                     Phone = src.Phone,
                     PasswordHash = hashService.GetHash(src.Password),
                     BirthDay = src.BirthDay,
-                    ImagePath = src.ImagePath,
                     CreatedDate = DateTime.UtcNow
                 }))
                     .ReverseMap();
@@ -55,7 +53,6 @@ namespace Fitnes.Application.Mappings
                     Phone = src.Phone,
                     PasswordHash = hashService.GetHash(src.Password),
                     BirthDay = src.BirthDay,
-                    ImagePath = src.ImagePath,
                     CreatedDate = DateTime.UtcNow
                 }))
                     .ReverseMap();

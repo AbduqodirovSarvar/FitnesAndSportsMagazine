@@ -1,4 +1,5 @@
 using Fitnes.Application;
+using Fitnes.Application.Models;
 using Fitnes.Application.Services;
 using Fitnes.Infrastructure;
 using Microsoft.OpenApi.Models;
@@ -11,6 +12,8 @@ builder.Services.AddControllers()
                 options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
             });
 // Add services to the container.
+builder.Services.AddSingleton(builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+
 builder.Services.ApplicationServices();
 builder.Services.InfrastructureServices(builder.Configuration);
 builder.Services.AddControllers();

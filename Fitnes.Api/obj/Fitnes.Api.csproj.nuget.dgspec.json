@@ -133,13 +133,29 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "Google.Apis": {
+              "target": "Package",
+              "version": "[1.62.1, )"
+            },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.62.1, )"
+            },
+            "Google.Apis.Core": {
+              "target": "Package",
+              "version": "[1.62.1, )"
+            },
+            "Google.Apis.Gmail.v1": {
+              "target": "Package",
+              "version": "[1.62.0.3182, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.1.1, )"
             },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
-              "version": "[2.2.0, )"
+              "version": "[2.1.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

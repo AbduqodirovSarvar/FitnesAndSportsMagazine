@@ -2,6 +2,7 @@
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Domain.Entities;
 using Fitnes.Domain.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,6 +29,6 @@ namespace Fitnes.Application.UseCases.Users.Commands
         public DateOnly BirthDay { get; set; }
         [Required]
         public TypeDays Days { get; set; }
-        public string? ImagePath { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

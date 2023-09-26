@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using Fitnes.Application.Models.ViewModels;
+using Fitnes.Application.UseCases.Users.Commands;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.Interfaces
 {
-    public interface ISendMessageToMail
+    public interface IFileSaveToFolder
     {
-        Task SendMessage(string email);
+        Task<string> SaveToFolderAsync(IFormFile file);
     }
 }
