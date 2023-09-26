@@ -47,7 +47,7 @@ namespace Fitnes.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 9, 26, 17, 0, 18, 28, DateTimeKind.Utc).AddTicks(8121),
+                            CreatedDate = new DateTime(2023, 9, 26, 20, 29, 27, 568, DateTimeKind.Utc).AddTicks(8057),
                             UserId = 1
                         });
                 });
@@ -171,9 +171,12 @@ namespace Fitnes.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("MsgOrPath")
+                    b.Property<string>("MsgOrFileName")
                         .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Route")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");
@@ -248,7 +251,7 @@ namespace Fitnes.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("ImagePath")
+                    b.Property<string>("ImageName")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -347,7 +350,7 @@ namespace Fitnes.Infrastructure.Migrations
                         {
                             Id = 1,
                             BirthDay = new DateOnly(2002, 3, 16),
-                            CreatedDate = new DateTime(2023, 9, 26, 17, 0, 18, 26, DateTimeKind.Utc).AddTicks(5358),
+                            CreatedDate = new DateTime(2023, 9, 26, 20, 29, 27, 565, DateTimeKind.Utc).AddTicks(9361),
                             Email = "abduqodirovsarvar.2002@gmail.com",
                             FirstName = "Admin",
                             LastName = "Admin",

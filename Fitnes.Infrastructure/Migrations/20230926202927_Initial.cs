@@ -23,7 +23,7 @@ namespace Fitnes.Infrastructure.Migrations
                     Price = table.Column<double>(type: "double precision", nullable: false),
                     Brand = table.Column<string>(type: "text", nullable: false),
                     Amount = table.Column<int>(type: "integer", nullable: false),
-                    ImagePath = table.Column<string>(type: "text", nullable: true),
+                    ImageName = table.Column<string>(type: "text", nullable: true),
                     ProductType = table.Column<int>(type: "integer", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
@@ -163,8 +163,9 @@ namespace Fitnes.Infrastructure.Migrations
                     ConsumerId = table.Column<int>(type: "integer", nullable: false),
                     ConsumerId1 = table.Column<int>(type: "integer", nullable: true),
                     AdminId = table.Column<int>(type: "integer", nullable: false),
-                    MsgOrPath = table.Column<string>(type: "text", nullable: false),
+                    MsgOrFileName = table.Column<string>(type: "text", nullable: false),
                     Type = table.Column<int>(type: "integer", nullable: false),
+                    Route = table.Column<int>(type: "integer", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
@@ -257,12 +258,12 @@ namespace Fitnes.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "BirthDay", "CreatedDate", "Email", "FirstName", "ImageName", "LastName", "PasswordHash", "Phone" },
-                values: new object[] { 1, new DateOnly(2002, 3, 16), new DateTime(2023, 9, 26, 17, 0, 18, 26, DateTimeKind.Utc).AddTicks(5358), "abduqodirovsarvar.2002@gmail.com", "Admin", null, "Admin", "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=", "+998932340316" });
+                values: new object[] { 1, new DateOnly(2002, 3, 16), new DateTime(2023, 9, 26, 20, 29, 27, 565, DateTimeKind.Utc).AddTicks(9361), "abduqodirovsarvar.2002@gmail.com", "Admin", null, "Admin", "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=", "+998932340316" });
 
             migrationBuilder.InsertData(
                 table: "Admins",
                 columns: new[] { "Id", "CreatedDate", "UserId" },
-                values: new object[] { 1, new DateTime(2023, 9, 26, 17, 0, 18, 28, DateTimeKind.Utc).AddTicks(8121), 1 });
+                values: new object[] { 1, new DateTime(2023, 9, 26, 20, 29, 27, 568, DateTimeKind.Utc).AddTicks(8057), 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admins_UserId",

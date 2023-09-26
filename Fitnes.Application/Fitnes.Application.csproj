@@ -11,6 +11,7 @@
     <Folder Include="Models\CreateDto\" />
     <Folder Include="UseCases\Authorize\Commands\" />
     <Folder Include="UseCases\Authorize\CommandHandlers\" />
+    <Folder Include="UseCases\Equipments\CommandHandlers\" />
     <Folder Include="UseCases\Orders\Commands\" />
     <Folder Include="UseCases\Orders\CommandsHandlers\" />
     <Folder Include="UseCases\Orders\QueryHandlers\" />

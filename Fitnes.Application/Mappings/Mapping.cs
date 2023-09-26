@@ -2,6 +2,7 @@
 using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.Services;
+using Fitnes.Application.UseCases.Products.Commands;
 using Fitnes.Application.UseCases.Users.Commands;
 using Fitnes.Domain.Entities;
 using System;
@@ -55,6 +56,9 @@ namespace Fitnes.Application.Mappings
                     BirthDay = src.BirthDay,
                     CreatedDate = DateTime.UtcNow
                 }))
+                    .ReverseMap();
+            CreateMap<CreateProductCommand, Product>()
+                .ForMember(x => x.ProductType, y => y.MapFrom(z => z.GetProductType()))
                     .ReverseMap();
             CreateMap<User, UserViewModel>()
                 .ReverseMap();
