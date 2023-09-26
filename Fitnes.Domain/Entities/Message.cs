@@ -14,8 +14,9 @@ namespace Fitnes.Domain.Entities
         public Consumer? Consumer { get; set; }
         public int AdminId { get; set; }
         public Admin? Admin { get; set; }
-        public string MsgOrPath { get; set; } = string.Empty;
+        public string MsgOrFileName { get; set; } = string.Empty;
         public MessageType Type { get; set; }
+        public SendOrReceive Route { get; set; } = SendOrReceive.Send;
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

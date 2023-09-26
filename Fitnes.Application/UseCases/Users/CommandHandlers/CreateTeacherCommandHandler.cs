@@ -28,7 +28,7 @@ namespace Fitnes.Application.UseCases.Users.CommandHandlers
 
         public async Task<TeacherViewModel> Handle(CreateTeacherCommand request, CancellationToken cancellationToken)
         {
-            await mailSender.SendMessage("sarvarabduqodirov.2002@gmail.com", "hello");
+            //await mailSender.SendMessage("sarvarabduqodirov.2002@gmail.com", "hello");
 
             if(await context.Users.AnyAsync(x => x.Email == request.Email || x.Phone == request.Phone, cancellationToken))
             {

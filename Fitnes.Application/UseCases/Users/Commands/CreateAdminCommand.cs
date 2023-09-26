@@ -1,5 +1,6 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -23,6 +24,6 @@ namespace Fitnes.Application.UseCases.Users.Commands
         public string Password { get; set; } = null!;
         [Required]
         public DateOnly BirthDay { get; set; }
-        public string? ImagePath { get; set; }
+        public IFormFile? Image { get; set; }
     }
 }

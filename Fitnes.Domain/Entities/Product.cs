@@ -15,7 +15,7 @@ namespace Fitnes.Domain.Entities
         public double Price { get; set; }
         public string Brand { get; set; } = string.Empty;
         public int Amount { get; set; }
-        public string? ImagePath { get; set; }
+        public string? ImageName { get; set; }
         public ProductType ProductType { get; set; } = ProductType.Product;
         public string Type { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;

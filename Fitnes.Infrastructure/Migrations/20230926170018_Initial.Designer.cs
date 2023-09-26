@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Fitnes.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230925145139_Initial")]
+    [Migration("20230926170018_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -44,13 +44,13 @@ namespace Fitnes.Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Admin");
+                    b.ToTable("Admins");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 9, 25, 14, 51, 39, 114, DateTimeKind.Utc).AddTicks(573),
+                            CreatedDate = new DateTime(2023, 9, 26, 17, 0, 18, 28, DateTimeKind.Utc).AddTicks(8121),
                             UserId = 1
                         });
                 });
@@ -113,7 +113,7 @@ namespace Fitnes.Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Consumer");
+                    b.ToTable("Consumers");
                 });
 
             modelBuilder.Entity("Fitnes.Domain.Entities.ConsumerService", b =>
@@ -350,7 +350,7 @@ namespace Fitnes.Infrastructure.Migrations
                         {
                             Id = 1,
                             BirthDay = new DateOnly(2002, 3, 16),
-                            CreatedDate = new DateTime(2023, 9, 25, 14, 51, 39, 111, DateTimeKind.Utc).AddTicks(3745),
+                            CreatedDate = new DateTime(2023, 9, 26, 17, 0, 18, 26, DateTimeKind.Utc).AddTicks(5358),
                             Email = "abduqodirovsarvar.2002@gmail.com",
                             FirstName = "Admin",
                             LastName = "Admin",

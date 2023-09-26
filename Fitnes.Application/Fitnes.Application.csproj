@@ -16,7 +16,6 @@
     <Folder Include="UseCases\Orders\QueryHandlers\" />
     <Folder Include="UseCases\Orders\Queries\" />
     <Folder Include="UseCases\Users\QueryHandlers\" />
-    <Folder Include="UseCases\Users\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

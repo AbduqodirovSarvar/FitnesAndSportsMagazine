@@ -16,7 +16,7 @@ namespace Fitnes.Application.Models.ViewModels
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
         public DateOnly BirthDay { get; set; }
-        public string? ImagePath { get; set; }
+        public string? ImageName { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }

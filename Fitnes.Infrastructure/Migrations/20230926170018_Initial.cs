@@ -54,7 +54,7 @@ namespace Fitnes.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Admin",
+                name: "Admins",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -64,9 +64,9 @@ namespace Fitnes.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Admin", x => x.Id);
+                    table.PrimaryKey("PK_Admins", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Admin_Users_UserId",
+                        name: "FK_Admins_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -95,7 +95,7 @@ namespace Fitnes.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Consumer",
+                name: "Consumers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -106,14 +106,14 @@ namespace Fitnes.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Consumer", x => x.Id);
+                    table.PrimaryKey("PK_Consumers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Consumer_Teachers_TeacherId",
+                        name: "FK_Consumers_Teachers_TeacherId",
                         column: x => x.TeacherId,
                         principalTable: "Teachers",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Consumer_Users_UserId",
+                        name: "FK_Consumers_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -136,15 +136,15 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Cards", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cards_Consumer_ConsumerId",
+                        name: "FK_Cards_Consumers_ConsumerId",
                         column: x => x.ConsumerId,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Cards_Consumer_ConsumerId1",
+                        name: "FK_Cards_Consumers_ConsumerId1",
                         column: x => x.ConsumerId1,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Cards_Products_ProductId",
@@ -171,21 +171,21 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Messages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Messages_Admin_AdminId",
+                        name: "FK_Messages_Admins_AdminId",
                         column: x => x.AdminId,
-                        principalTable: "Admin",
+                        principalTable: "Admins",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Messages_Consumer_ConsumerId",
+                        name: "FK_Messages_Consumers_ConsumerId",
                         column: x => x.ConsumerId,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Messages_Consumer_ConsumerId1",
+                        name: "FK_Messages_Consumers_ConsumerId1",
                         column: x => x.ConsumerId1,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id");
                 });
 
@@ -206,15 +206,15 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_Consumer_ConsumerId",
+                        name: "FK_Orders_Consumers_ConsumerId",
                         column: x => x.ConsumerId,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Consumer_ConsumerId1",
+                        name: "FK_Orders_Consumers_ConsumerId1",
                         column: x => x.ConsumerId1,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Orders_Products_ProductId",
@@ -242,31 +242,31 @@ namespace Fitnes.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Services", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Services_Consumer_ConsumerId",
+                        name: "FK_Services_Consumers_ConsumerId",
                         column: x => x.ConsumerId,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Services_Consumer_ConsumerId1",
+                        name: "FK_Services_Consumers_ConsumerId1",
                         column: x => x.ConsumerId1,
-                        principalTable: "Consumer",
+                        principalTable: "Consumers",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "BirthDay", "CreatedDate", "Email", "FirstName", "ImageName", "LastName", "PasswordHash", "Phone" },
-                values: new object[] { 1, new DateOnly(2002, 3, 16), new DateTime(2023, 9, 25, 14, 51, 39, 111, DateTimeKind.Utc).AddTicks(3745), "abduqodirovsarvar.2002@gmail.com", "Admin", null, "Admin", "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=", "+998932340316" });
+                values: new object[] { 1, new DateOnly(2002, 3, 16), new DateTime(2023, 9, 26, 17, 0, 18, 26, DateTimeKind.Utc).AddTicks(5358), "abduqodirovsarvar.2002@gmail.com", "Admin", null, "Admin", "73l8gRjwLftklgfdXT+MdiMEjJwGPVMsyVxe16iYpk8=", "+998932340316" });
 
             migrationBuilder.InsertData(
-                table: "Admin",
+                table: "Admins",
                 columns: new[] { "Id", "CreatedDate", "UserId" },
-                values: new object[] { 1, new DateTime(2023, 9, 25, 14, 51, 39, 114, DateTimeKind.Utc).AddTicks(573), 1 });
+                values: new object[] { 1, new DateTime(2023, 9, 26, 17, 0, 18, 28, DateTimeKind.Utc).AddTicks(8121), 1 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Admin_UserId",
-                table: "Admin",
+                name: "IX_Admins_UserId",
+                table: "Admins",
                 column: "UserId",
                 unique: true);
 
@@ -286,13 +286,13 @@ namespace Fitnes.Infrastructure.Migrations
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Consumer_TeacherId",
-                table: "Consumer",
+                name: "IX_Consumers_TeacherId",
+                table: "Consumers",
                 column: "TeacherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Consumer_UserId",
-                table: "Consumer",
+                name: "IX_Consumers_UserId",
+                table: "Consumers",
                 column: "UserId",
                 unique: true);
 
@@ -371,13 +371,13 @@ namespace Fitnes.Infrastructure.Migrations
                 name: "Services");
 
             migrationBuilder.DropTable(
-                name: "Admin");
+                name: "Admins");
 
             migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Consumer");
+                name: "Consumers");
 
             migrationBuilder.DropTable(
                 name: "Teachers");
