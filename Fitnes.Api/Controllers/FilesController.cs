@@ -28,5 +28,23 @@ namespace Fitnes.Api.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("All")]
+        public IActionResult GetAllFile()
+        {
+            try
+            {
+                string folderPath = Directory.GetCurrentDirectory();
+                string fullPath = Path.GetFullPath(Path.Combine(folderPath, "..", "Fitnes.Application", "Files", "Images"));
+
+                var files = Directory.GetFiles(fullPath).Select(x => Path.GetFileName(x)).ToList();
+
+                return Ok(files);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

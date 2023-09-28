@@ -3,6 +3,7 @@ using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.Services;
 using Fitnes.Application.UseCases.Products.Commands;
+using Fitnes.Application.UseCases.Services.Commands;
 using Fitnes.Application.UseCases.Users.Commands;
 using Fitnes.Domain.Entities;
 using Fitnes.Domain.Enums;
@@ -35,7 +36,8 @@ namespace Fitnes.Application.Mappings
                 .ForMember(x => x.ProductType, y => y.MapFrom(z => z.GetProductType()))
                     .ReverseMap();
             CreateMap<User, UserViewModel>()
-                .ReverseMap();
+                .ForMember(x => x.UserId, y => y.MapFrom(z => z.Id))
+                    .ReverseMap();
             CreateMap<User, ConsumerViewModel>()
                     .ForMember(x => x.Teacher, y => y.MapFrom(z => z.Teacher))
                         .ForMember(x => x.ConsumerId, y => y.MapFrom(z => z.Id))
@@ -66,8 +68,8 @@ namespace Fitnes.Application.Mappings
                 .ForMember(x => x.Product, y => y.MapFrom(z => z.Product))
                         .ForMember(x => x.CardId, y => y.MapFrom(z => z.Id))
                             .ReverseMap();
-            CreateMap<Chat, ChatViewModel>()
-                .ReverseMap();
+            CreateMap<Chat, ChatViewModel>().ReverseMap();
+            CreateMap<CreateServiceCommand, Service>().ReverseMap();
         }
     }
 }

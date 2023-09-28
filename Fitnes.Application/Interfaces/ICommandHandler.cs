@@ -1,4 +1,5 @@
 ﻿using Fitnes.Application.Models.ViewModels;
+using Fitnes.Application.UseCases.Cards.Commands;
 using Fitnes.Application.UseCases.Users.Commands;
 using MediatR;
 using System;

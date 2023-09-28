@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Fitnes.Application.Models.UpdateDto;
+using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Users.Commands;
+using Fitnes.Application.UseCases.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +27,8 @@ namespace Fitnes.Api.Controllers
             try
             {
                 CreateUserCommand command = mapper.Map<CreateUserCommand>(dto);
-                return Ok(await mediator.Send(command));
+                var user = await mediator.Send(command);
+                return Ok(mapper.Map<AdminViewModel>(user));
             }
             catch (Exception ex)
             {
@@ -39,7 +42,8 @@ namespace Fitnes.Api.Controllers
             try
             {
                 UpdateUserCommand command = mapper.Map<UpdateUserCommand>(dto);
-                return Ok(await mediator.Send(command));
+                var user = await mediator.Send(command);
+                return Ok(mapper.Map<AdminViewModel>(user));
             }
             catch (Exception ex)
             {
@@ -59,6 +63,22 @@ namespace Fitnes.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpGet("All")]
+        public async Task<IActionResult> GetAll()
+        {
+            var users = await mediator.Send(new GetAllUserQuery());
+            users = users.Where(x => x.Role == Domain.Enums.UserRole.Admin).ToList();
+            return Ok(mapper.Map<List<AdminViewModel>>(users));
+        }
+
+        [HttpGet]
+        [Route("{UserId}")]
+        public async Task<IActionResult> Get([FromRoute] int UserId)
+        {
+            var user = await mediator.Send(new GetUserQuery(UserId));
+            return Ok(mapper.Map<AdminViewModel>(user));
         }
     }
 }

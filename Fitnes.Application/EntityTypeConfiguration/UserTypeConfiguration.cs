@@ -20,7 +20,7 @@ namespace Fitnes.Application.EntityTypeConfiguration
             builder.HasIndex(x => x.Email).IsUnique();
             builder.HasIndex(x => x.Phone).IsUnique();
             builder.HasMany(x => x.Orders).WithOne().HasForeignKey(x => x.UserId);
-            builder.HasOne(x => x.Services).WithOne().HasForeignKey(x => x.UserId);
+            builder.HasOne(x => x.Service).WithOne(x => x.User).HasForeignKey<UserService>(x => x.UserId);
             builder.HasMany(x => x.Messages).WithOne().HasForeignKey(x => x.SenderId);
             builder.HasMany(x => x.Cards).WithOne().HasForeignKey(x => x.UserId);
             builder.HasOne(x => x.Chat).WithOne(x => x.User).HasForeignKey<Chat>(x => x.UserId);

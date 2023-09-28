@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.Models.UpdateDto
 {
-    internal class UpdateConsumerDto
+    public class UpdateConsumerDto
     {
         [Required]
         public int Id { get; set; }
