@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Users.CommandHandlers
 {
-    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, UserViewModel>
+    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, User>
     {
         private readonly IAppDbContext context;
         private readonly IMapper mapper;
@@ -24,7 +24,7 @@ namespace Fitnes.Application.UseCases.Users.CommandHandlers
             this.fileSaveToFolder = fileSaveToFolder;
         }
 
-        public async Task<UserViewModel> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             if (await context.Users.AnyAsync(x => x.Email == request.Email || x.Phone == request.Phone, cancellationToken))
             {
@@ -42,7 +42,7 @@ namespace Fitnes.Application.UseCases.Users.CommandHandlers
 
             await context.SaveChangesAsync(cancellationToken);
 
-            return mapper.Map<UserViewModel>(user);
+            return user;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Fitnes.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromForm] CreateTeacherCommand command)
+        public async Task<IActionResult> Post([FromForm] CreateTeacherDto command)
         {
             try
             {

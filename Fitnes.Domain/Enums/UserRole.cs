@@ -8,6 +8,6 @@ namespace Fitnes.Domain.Enums
 {
     public enum UserRole
     {
-        Consumer = 1, Admin = 2, SuperAdmin = 3
+        Consumer = 1, Teacher = 2, Admin = 3
     }
 }

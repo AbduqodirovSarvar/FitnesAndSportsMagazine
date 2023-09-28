@@ -17,23 +17,21 @@ namespace Fitnes.Infrastructure.DbContexts
             : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Teacher> Teachers { get; set; }
-        public DbSet<Admin> Admins { get; set; }
-        public DbSet<Consumer> Consumers { get; set; }
+        public DbSet<Chat> Chats { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<ConsumerService> Services { get; set; }
+        public DbSet<UserService> UserServices { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Card> Cards { get; set; }
+        public DbSet<Service> Services { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new UserTypeConfiguration());
             modelBuilder.ApplyConfiguration(new OrderTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new ConsumerTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new AdminTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new TeacherTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new MessageTypeConfiguration());
         }
     }
 }

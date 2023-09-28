@@ -1,4 +1,6 @@
-﻿using Fitnes.Application.UseCases.Users.Commands;
+﻿using AutoMapper;
+using Fitnes.Application.Models.UpdateDto;
+using Fitnes.Application.UseCases.Users.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,16 +12,19 @@ namespace Fitnes.Api.Controllers
     public class AdminsController : ControllerBase
     {
         private readonly IMediator mediator;
-        public AdminsController(IMediator mediator)
+        private readonly IMapper mapper;
+        public AdminsController(IMediator mediator, IMapper mapper)
         {
             this.mediator = mediator;
+            this.mapper = mapper;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromForm] CreateAdminCommand command)
+        public async Task<IActionResult> Post([FromForm] CreateAdminDto dto)
         {
             try
             {
+                CreateUserCommand command = mapper.Map<CreateUserCommand>(dto);
                 return Ok(await mediator.Send(command));
             }
             catch (Exception ex)
@@ -29,11 +34,26 @@ namespace Fitnes.Api.Controllers
         }
 
         [HttpPatch]
-        public async Task<IActionResult> Update([FromForm] UpdateAdminCommand command)
+        public async Task<IActionResult> Update([FromForm] UpdateAdminDto dto)
         {
             try
             {
+                UpdateUserCommand command = mapper.Map<UpdateUserCommand>(dto);
                 return Ok(await mediator.Send(command));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{UserId}")]
+        public async Task<IActionResult> Delete([FromRoute] int UserId)
+        {
+            try
+            {
+                return Ok(await mediator.Send(new DeleteUserCommand(UserId)));
             }
             catch (Exception ex)
             {

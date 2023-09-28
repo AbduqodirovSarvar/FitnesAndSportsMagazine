@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.Models.ViewModels
 {
-    public class ConsumerServiceViewModel
+    public class UserServiceViewModel
     {
         public int ServiceId { get; set; }
         public int ConsumerId { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fitnes.Application.UseCases.Users.Commands
+namespace Fitnes.Application.UseCases.Orders.Commands
 {
-    internal class DeleteTeacherCommand
+    internal class CreateOrderCommand
     {
     }
 }

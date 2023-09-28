@@ -1,6 +1,4 @@
-﻿using Fitnes.Application.Interfaces;
-using Fitnes.Domain.Entities;
-using Fitnes.Domain.Enums;
+﻿using Fitnes.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -9,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fitnes.Application.UseCases.Users.Commands
+namespace Fitnes.Application.Models.UpdateDto
 {
-    public class UpdateUserCommand : ICommand<User>
+    internal class UpdateConsumerDto
     {
         [Required]
         public int Id { get; set; }

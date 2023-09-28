@@ -1,6 +1,5 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
-using Fitnes.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Users.Commands
 {
-    public class CreateConsumerCommand : ICommand<ConsumerViewModel>
+    public class CreateAdminDto : ICommand<AdminViewModel>
     {
         [Required]
         public string FirstName { get; set; } = null!;
@@ -25,8 +24,6 @@ namespace Fitnes.Application.UseCases.Users.Commands
         public string Password { get; set; } = null!;
         [Required]
         public DateOnly BirthDay { get; set; }
-        public int? TeacherId { get; set; }
         public IFormFile? Image { get; set; }
-        public UserRole? Role { get; set; }
     }
 }

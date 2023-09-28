@@ -1,4 +1,5 @@
 ﻿using Fitnes.Domain.Entities;
+using Fitnes.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,22 @@ namespace Fitnes.Application.Models.ViewModels
     public class ConsumerViewModel
     {
         public int ConsumerId { get; set; }
-        public UserViewModel? User { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string Phone { get; set; } = null!;
+        public DateOnly BirthDay { get; set; }
+        public string? ImageName { get; set; }
         public int? TeacherId { get; set; }
-        public TeacherViewModel? Teacher { get; set; }
-        public DateTime JoinedTime { get; set; }
-        public ICollection<ConsumerServiceViewModel> Services { get; set; } = new HashSet<ConsumerServiceViewModel>();
-        public ICollection<MessageViewModel> Messages { get; set; } = new HashSet<MessageViewModel>();
-        public ICollection<OrderViewModel> Orders { get; set; } = new HashSet<OrderViewModel>();
-        public ICollection<CardViewModel> Cards { get; set; } = new HashSet<CardViewModel>();
+        public User? Teacher { get; set; }
+        public int? ServiceId { get; set; }
+        public Service? Service { get; set; }
+        public UserRole Role { get; set; } = UserRole.Consumer;
+        public TypeDays Days { get; set; } = TypeDays.Odd;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+        public ICollection<UserService> Services { get; set; } = new HashSet<UserService>();
+        public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
+        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        public ICollection<Card> Cards { get; set; } = new HashSet<Card>();
     }
 }

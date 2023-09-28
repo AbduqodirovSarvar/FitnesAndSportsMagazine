@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace Fitnes.Domain.Entities
 {
-    public class Card
+    public class Service
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public User? User { get; set; }
-        public int ProductId { get; set; }
-        public Product? Product { get; set; }
-        public int Amount { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }

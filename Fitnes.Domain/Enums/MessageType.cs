@@ -8,6 +8,6 @@ namespace Fitnes.Domain.Enums
 {
     public enum MessageType
     {
-        Unknown = 0, Text = 1, Image = 2, File = 3
+        Text = 1, File = 2, Unknow = 3
     }
 }

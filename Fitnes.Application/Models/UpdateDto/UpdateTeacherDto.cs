@@ -1,5 +1,4 @@
-﻿using Fitnes.Application.Interfaces;
-using Fitnes.Application.Models.ViewModels;
+﻿using Fitnes.Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -8,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fitnes.Application.UseCases.Users.Commands
+namespace Fitnes.Application.Models.UpdateDto
 {
-    public class UpdateAdminCommand : ICommand<AdminViewModel>
+    internal class UpdateTeacherDto
     {
         [Required]
-        public int AdminId { get; set; }
+        public int Id { get; set; }
         public string? FirstName { get; set; } = null;
         public string? LastName { get; set; } = null;
         public string? Email { get; set; } = null;
         public string? Phone { get; set; } = null;
-        public string? Password { get; set; } = null;
         public DateOnly? BirthDay { get; set; } = null;
         public IFormFile? Image { get; set; } = null;
+        public TypeDays? Days { get; set; } = null;
     }
 }
