@@ -10,6 +10,7 @@ namespace Fitnes.Application.UseCases.Orders.Queries
 {
     public class GetAllOrderQuery : IQuery<List<OrderViewModel>>
     {
-        public GetAllOrderQuery() { }
+        public int? UserId { get; set; }
+        public bool? IsSubmitted { get; set; }
     }
 }

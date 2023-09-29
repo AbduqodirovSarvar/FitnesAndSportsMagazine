@@ -15,9 +15,27 @@ namespace Fitnes.Application.UseCases.Orders.QueryHandlers
     {
         private readonly IAppDbContext context;
         private readonly IMapper mapper;
+        public GetAllOrderQueryHandler(IAppDbContext context, IMapper mapper)
+        {
+            this.context = context;
+            this.mapper = mapper;
+        }
+
         public async Task<List<OrderViewModel>> Handle(GetAllOrderQuery request, CancellationToken cancellationToken)
         {
-            return mapper.Map<List<OrderViewModel>>(await context.Orders.ToListAsync(cancellationToken));
+            var orders = await context.Orders.ToListAsync(cancellationToken);
+
+            if(request?.UserId != null)
+            {
+                orders = orders.Where(x => x.UserId == request.UserId).ToList();
+            }
+
+            if(request?.IsSubmitted != null)
+            {
+                orders = orders.Where(x => x.IsSubmitted == request.IsSubmitted).ToList();
+            }
+
+            return mapper.Map<List<OrderViewModel>>(orders);
         }
     }
 }

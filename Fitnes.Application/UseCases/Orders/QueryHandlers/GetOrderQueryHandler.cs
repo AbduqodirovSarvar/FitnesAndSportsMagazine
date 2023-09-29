@@ -2,6 +2,7 @@
 using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Orders.Queries;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +15,21 @@ namespace Fitnes.Application.UseCases.Orders.QueryHandlers
     {
         private readonly IAppDbContext context;
         private readonly IMapper mapper;
-        private readonly ICurrentUserService currentUserService;
-        public GetOrderQueryHandler(IAppDbContext context, IMapper mapper, ICurrentUserService currentUserService)
+        public GetOrderQueryHandler(IAppDbContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
-            this.currentUserService = currentUserService;
         }
 
-        public Task<OrderViewModel> Handle(GetOrderQuery request, CancellationToken cancellationToken)
+        public async Task<OrderViewModel> Handle(GetOrderQuery request, CancellationToken cancellationToken)
         {
+            var order = await context.Orders.FirstOrDefaultAsync(x => x.Id == request.OrderId, cancellationToken);
+            if (order == null)
+            {
+                throw new Exception("Order not found");
+            }
 
-            throw new NotImplementedException();
+            return mapper.Map<OrderViewModel>(order);
         }
     }
 }
