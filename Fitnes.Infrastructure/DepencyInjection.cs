@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Fitnes.Application.Interfaces;
+using Fitnes.Domain.Enums;
 using Fitnes.Infrastructure.DbContexts;
 using Fitnes.Infrastructure.Models;
 using Fitnes.Infrastructure.Services;
@@ -56,12 +57,15 @@ namespace Fitnes.Infrastructure
             {
                 option.AddPolicy("AdminActions", policy =>
                 {
-                    policy.RequireClaim(ClaimTypes.Role, "Admin");
+                    policy.RequireClaim(ClaimTypes.Role, UserRole.Admin.ToString());
                 });
-
                 option.AddPolicy("ConsumerAction", policy =>
                 {
-                    policy.RequireClaim(ClaimTypes.Role, "Consumer");
+                    policy.RequireClaim(ClaimTypes.Role, UserRole.Consumer.ToString());
+                });
+                option.AddPolicy("TeacherAction", policy =>
+                {
+                    policy.RequireClaim(ClaimTypes.Role, UserRole.Teacher.ToString());
                 });
             });
 

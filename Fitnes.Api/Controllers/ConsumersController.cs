@@ -4,6 +4,7 @@ using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Users.Commands;
 using Fitnes.Application.UseCases.Users.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace Fitnes.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ConsumersController : ControllerBase
     {
         private readonly IMediator mediator;

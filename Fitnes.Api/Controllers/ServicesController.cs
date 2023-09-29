@@ -1,6 +1,7 @@
 ﻿using Fitnes.Application.UseCases.Services.Commands;
 using Fitnes.Application.UseCases.Services.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,7 @@ namespace Fitnes.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "AdminActions")]
     public class ServicesController : ControllerBase
     {
         private readonly IMediator mediator;

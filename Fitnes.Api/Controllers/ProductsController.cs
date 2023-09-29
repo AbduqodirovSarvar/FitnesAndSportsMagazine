@@ -2,12 +2,14 @@
 using Fitnes.Application.UseCases.Products.Queries;
 using Fitnes.Domain.Enums;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "AdminActions")]
     public class ProductsController : ControllerBase
     {
         private readonly IMediator mediator;
