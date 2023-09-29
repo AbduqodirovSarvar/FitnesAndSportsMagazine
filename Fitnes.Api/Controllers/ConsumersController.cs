@@ -5,7 +5,6 @@ using Fitnes.Application.UseCases.Users.Commands;
 using Fitnes.Application.UseCases.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers
@@ -80,7 +79,7 @@ namespace Fitnes.Api.Controllers
         public async Task<IActionResult> Get([FromRoute] int UserId)
         {
             var user = await mediator.Send(new GetUserQuery(UserId));
-            if(user.Role != Domain.Enums.UserRole.Consumer)
+            if (user.Role != Domain.Enums.UserRole.Consumer)
             {
                 return NotFound();
             }

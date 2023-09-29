@@ -3,7 +3,6 @@ using Fitnes.Application.UseCases.Products.Queries;
 using Fitnes.Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers

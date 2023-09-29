@@ -1,6 +1,5 @@
 ﻿using Fitnes.Application.UseCases.Authorize.Commands;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers

@@ -1,7 +1,4 @@
-﻿using Fitnes.Application.UseCases.Users.Queries;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers
@@ -25,7 +22,7 @@ namespace Fitnes.Api.Controllers
 
                 return PhysicalFile(fullPath, contentType);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -43,7 +40,7 @@ namespace Fitnes.Api.Controllers
 
                 return Ok(files);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

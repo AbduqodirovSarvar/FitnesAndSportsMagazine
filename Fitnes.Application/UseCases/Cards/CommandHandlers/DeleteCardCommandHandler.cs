@@ -1,11 +1,6 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.UseCases.Cards.Commands;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Cards.CommandHandlers
 {

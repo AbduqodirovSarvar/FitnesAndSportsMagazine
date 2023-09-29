@@ -3,11 +3,6 @@ using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Cards.Commands;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Cards.CommandHandlers
 {
@@ -39,7 +34,7 @@ namespace Fitnes.Application.UseCases.Cards.CommandHandlers
 
             card.Amount = request.Amount ?? card.Amount;
 
-            if(card.Amount < 1)
+            if (card.Amount < 1)
             {
                 context.Cards.Remove(card);
             }

@@ -4,11 +4,6 @@ using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Products.Commands;
 using Fitnes.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Products.CommandHandlers
 {
@@ -25,7 +20,7 @@ namespace Fitnes.Application.UseCases.Products.CommandHandlers
         }
         public async Task<ProductViewModel> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var product = await context.Products.FirstOrDefaultAsync(x => x.Name== request.Name && x.ProductType == request.GetProductType(), cancellationToken);
+            var product = await context.Products.FirstOrDefaultAsync(x => x.Name == request.Name && x.ProductType == request.GetProductType(), cancellationToken);
             if (product != null)
             {
                 throw new Exception("Product already exists");
@@ -40,7 +35,7 @@ namespace Fitnes.Application.UseCases.Products.CommandHandlers
 
             await context.Products.AddAsync(product, cancellationToken);
             await context.SaveChangesAsync(cancellationToken);
-            
+
             return mapper.Map<ProductViewModel>(product);
         }
     }

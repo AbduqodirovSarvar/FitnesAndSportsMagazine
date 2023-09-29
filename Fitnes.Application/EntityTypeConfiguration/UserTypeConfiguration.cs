@@ -3,11 +3,6 @@ using Fitnes.Application.Services;
 using Fitnes.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.EntityTypeConfiguration
 {
@@ -16,7 +11,7 @@ namespace Fitnes.Application.EntityTypeConfiguration
         private readonly IHashService hashService = new HashService();
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            
+
             builder.HasIndex(x => x.Email).IsUnique();
             builder.HasIndex(x => x.Phone).IsUnique();
             builder.HasMany(x => x.Orders).WithOne().HasForeignKey(x => x.UserId);

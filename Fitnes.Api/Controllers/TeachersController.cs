@@ -5,7 +5,6 @@ using Fitnes.Application.UseCases.Users.Commands;
 using Fitnes.Application.UseCases.Users.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers

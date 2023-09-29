@@ -3,12 +3,7 @@ using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Authorize.Commands;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Authorize.CommandHandlers
 {

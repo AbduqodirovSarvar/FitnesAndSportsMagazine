@@ -1,12 +1,4 @@
-﻿using Fitnes.Application.Models.ViewModels;
-using Fitnes.Application.UseCases.Cards.Commands;
-using Fitnes.Application.UseCases.Users.Commands;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Fitnes.Application.Interfaces
 {

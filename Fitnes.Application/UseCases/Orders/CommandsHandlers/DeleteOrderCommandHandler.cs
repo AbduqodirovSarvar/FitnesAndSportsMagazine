@@ -1,11 +1,6 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.UseCases.Orders.Commands;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Orders.CommandsHandlers
 {
@@ -20,7 +15,7 @@ namespace Fitnes.Application.UseCases.Orders.CommandsHandlers
         public async Task<bool> Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
         {
             var order = await context.Orders.FirstOrDefaultAsync(x => x.Id == request.OrderID, cancellationToken);
-            if(order == null)
+            if (order == null)
             {
                 throw new Exception("Order not found");
             }

@@ -3,11 +3,6 @@ using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models.ViewModels;
 using Fitnes.Application.UseCases.Products.Commands;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Products.CommandHandlers
 {
@@ -36,7 +31,7 @@ namespace Fitnes.Application.UseCases.Products.CommandHandlers
             product.Amount = request.Amount ?? product.Amount;
             product.Brand = request.Brand ?? product.Brand;
             product.Type = request.Type ?? product.Type;
-            if(request.Image!= null || request.Image?.Length > 0)
+            if (request.Image != null || request.Image?.Length > 0)
             {
                 product.ImageName = await fileSaveToFolder.SaveToFolderAsync(request.Image);
             }

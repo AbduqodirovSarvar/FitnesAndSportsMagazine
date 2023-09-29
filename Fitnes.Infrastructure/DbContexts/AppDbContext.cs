@@ -1,19 +1,13 @@
 ﻿using Fitnes.Application.EntityTypeConfiguration;
 using Fitnes.Application.Interfaces;
-using Fitnes.Application.Services;
 using Fitnes.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Infrastructure.DbContexts
 {
     public class AppDbContext : DbContext, IAppDbContext
     {
-        public AppDbContext(DbContextOptions options) 
+        public AppDbContext(DbContextOptions options)
             : base(options) { }
 
         public DbSet<User> Users { get; set; }

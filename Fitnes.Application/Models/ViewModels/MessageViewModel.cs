@@ -1,10 +1,4 @@
-﻿using Fitnes.Domain.Entities;
-using Fitnes.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Fitnes.Domain.Enums;
 
 namespace Fitnes.Application.Models.ViewModels
 {

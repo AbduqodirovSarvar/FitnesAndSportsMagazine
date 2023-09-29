@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Fitnes.Application.Interfaces;
+﻿using Fitnes.Application.Interfaces;
 using Fitnes.Domain.Enums;
 using Fitnes.Infrastructure.DbContexts;
 using Fitnes.Infrastructure.Models;
@@ -9,12 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Infrastructure
 {

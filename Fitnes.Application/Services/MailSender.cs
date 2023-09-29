@@ -1,9 +1,7 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.Models;
-using System;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.Services
 {

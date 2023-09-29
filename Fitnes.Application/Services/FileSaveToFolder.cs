@@ -1,11 +1,5 @@
 ﻿using Fitnes.Application.Interfaces;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.Services
 {
@@ -22,7 +16,7 @@ namespace Fitnes.Application.Services
             {
                 await file.CopyToAsync(stream);
             }
-            
+
             return fileName;
         }
     }

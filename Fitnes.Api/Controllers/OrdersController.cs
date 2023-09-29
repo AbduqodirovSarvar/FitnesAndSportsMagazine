@@ -2,7 +2,6 @@
 using Fitnes.Application.UseCases.Orders.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers

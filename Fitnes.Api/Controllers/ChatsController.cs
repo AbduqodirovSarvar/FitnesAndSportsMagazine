@@ -5,7 +5,6 @@ using Fitnes.Application.UseCases.Chats.Commands;
 using Fitnes.Application.UseCases.Chats.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fitnes.Api.Controllers
@@ -31,18 +30,18 @@ namespace Fitnes.Api.Controllers
             try
             {
                 CreateMessageCommand command = mapper.Map<CreateMessageCommand>(dto);
-                if(dto.File != null && dto.Type == Domain.Enums.MessageType.File)
+                if (dto.File != null && dto.Type == Domain.Enums.MessageType.File)
                 {
                     command.MsgOrFileName = await fileSaveToFolder.SaveToFolderAsync(dto.File);
                 }
-                else if(dto.Text != null && dto.Type == Domain.Enums.MessageType.Text)
+                else if (dto.Text != null && dto.Type == Domain.Enums.MessageType.Text)
                 {
                     command.MsgOrFileName = dto.Text;
                 }
 
                 return Ok(await mediator.Send(command));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -55,7 +54,7 @@ namespace Fitnes.Api.Controllers
             {
                 return Ok(await mediator.Send(new DeleteMessageCommand(MessageId)));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

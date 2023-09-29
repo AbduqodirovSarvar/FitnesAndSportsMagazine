@@ -1,10 +1,5 @@
 ﻿using Fitnes.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.Interfaces
 {
@@ -12,7 +7,7 @@ namespace Fitnes.Application.Interfaces
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Chat> Chats { get; set; }
-        public DbSet<Product> Products { get; set; } 
+        public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<UserService> UserServices { get; set; }

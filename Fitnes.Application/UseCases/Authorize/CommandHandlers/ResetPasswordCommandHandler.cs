@@ -1,11 +1,6 @@
 ﻿using Fitnes.Application.Interfaces;
 using Fitnes.Application.UseCases.Authorize.Commands;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitnes.Application.UseCases.Authorize.CommandHandlers
 {
@@ -22,7 +17,7 @@ namespace Fitnes.Application.UseCases.Authorize.CommandHandlers
         public async Task<bool> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
         {
             var user = await context.Users.FirstOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
-            if(user == null)
+            if (user == null)
             {
                 throw new Exception("User not found");
             }
