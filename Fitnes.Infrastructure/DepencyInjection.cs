@@ -1,10 +1,12 @@
 ﻿using Fitnes.Application.Interfaces;
+using Fitnes.Domain.Entities;
 using Fitnes.Domain.Enums;
 using Fitnes.Infrastructure.DbContexts;
 using Fitnes.Infrastructure.Models;
 using Fitnes.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -17,8 +19,17 @@ namespace Fitnes.Infrastructure
     {
         public static IServiceCollection InfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddDbContextFactory<AppDbContext>(opt => opt.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+
             services.AddDbContext<AppDbContext>(options
                 => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IAppDbContext, AppDbContext>();
+
+            services.AddSingleton<IDesignTimeDbContextFactory<AppDbContext>>(provider =>
+            {
+                var configuration = provider.GetRequiredService<IConfiguration>();
+                return new AppDbContextFactory();
+            });
 
             services.AddScoped<IAppDbContext, AppDbContext>();
 
