@@ -10,7 +10,6 @@ namespace Fitnes.Application.Models.ViewModels
         public string LastName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string Phone { get; set; } = null!;
-        public string PasswordHash { get; set; } = null!;
         public DateOnly BirthDay { get; set; }
         public string? ImageName { get; set; }
         public int? TeacherId { get; set; }
